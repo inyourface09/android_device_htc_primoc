@@ -15,6 +15,6 @@ PRODUCT_MANUFACTURER := HTC
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=htc_primoc BUILD_FINGERPRINT=virgin_mobile/htc_primoc/primoc:4.2.2/JDQ39/330937:user/user-debug PRIVATE_BUILD_DESC="4.2.2 JDQ39 330937 user-debug"
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.goo.developerid=gannon5197 \
-    ro.goo.rom=cm_$(TARGET_PRODUCT)-ion \
+    ro.goo.developerid=inyourface09 \
+    ro.goo.rom=cm_$(TARGET_PRODUCT)-pmem \
     ro.goo.version=$(shell date +%s)
