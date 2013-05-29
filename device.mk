@@ -63,8 +63,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/primoc/overlay
 
-# lower the increment
-
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
@@ -113,8 +111,7 @@ $(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
 
 # Media Profiles
 PRODUCT_COPY_FILES += \
-    device/htc/primoc/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    device/htc/primoc/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml
+    device/htc/primoc/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # ACDB
 PRODUCT_COPY_FILES += \
@@ -133,14 +130,13 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330
 
 # BCM4330 firmware
 PRODUCT_COPY_FILES += \
-    device/htc/primoc/firmware/bcm4330.hcd:system/etc/firmware/bcm4330.hcd \
-    device/htc/primoc/firmware/fw_bcm4330_apsta_b1.bin:system/etc/firmware/fw_bcm4330_apsta_b1.bin \
-    device/htc/primoc/firmware/fw_bcm4330_apsta_b2.bin:system/etc/firmware/fw_bcm4330_apsta_b2.bin \
-    device/htc/primoc/firmware/fw_bcm4330_b2.bin:system/etc/firmware/fw_bcm4330_b2.bin \
-    device/htc/primoc/firmware/fw_bcm4330_b1.bin:system/etc/firmware/fw_bcm4330_b1.bin \
-    device/htc/primoc/firmware/fw_bcm4330_p2p_b2.bin:system/etc/firmware/fw_bcm4330_p2p_b2.bin \
-    device/htc/primoc/firmware/fw_bcm4330_p2p_b1.bin:system/etc/firmware/fw_bcm4330_p2p_b1.bin \
-    device/htc/primoc/firmware/calibration:system/etc/calibration
+    device/htc/primoc/firmware/bcm4330.hcd:system/vendor/firmware/bcm4330.hcd \
+    device/htc/primoc/firmware/fw_bcm4330_apsta_b1.bin:system/vendor/firmware/fw_bcm4330_apsta_b1.bin \
+    device/htc/primoc/firmware/fw_bcm4330_apsta_b2.bin:system/vendor/firmware/fw_bcm4330_apsta_b2.bin \
+    device/htc/primoc/firmware/fw_bcm4330_b2.bin:system/vendor/firmware/fw_bcm4330_b2.bin \
+    device/htc/primoc/firmware/fw_bcm4330_b1.bin:system/vendor/firmware/fw_bcm4330_b1.bin \
+    device/htc/primoc/firmware/fw_bcm4330_p2p_b2.bin:system/vendor/firmware/fw_bcm4330_p2p_b2.bin \
+    device/htc/primoc/firmware/fw_bcm4330_p2p_b1.bin:system/vendor/firmware/fw_bcm4330_p2p_b1.bin
 
 # Bluetooth Vendor Configuration
 PRODUCT_COPY_FILES += \

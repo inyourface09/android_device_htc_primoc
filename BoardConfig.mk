@@ -31,49 +31,67 @@ USE_CAMERA_STUB := true
 # inherit from the proprietary version
 -include vendor/htc/primoc/BoardConfigVendor.mk
 
+# Compiler Optimization
+ARCH_ARM_HAVE_HIGH_OPTIMIZATION := true
+
+#Kernel & Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := primoc
 
 BOARD_KERNEL_CMDLINE := no_console_suspend=1
 BOARD_KERNEL_BASE := 0x14300000
 BOARD_KERNEL_PAGE_SIZE := 4096
 
+# GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := primoc
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
+# Build our own liblights
 TARGET_PROVIDES_LIBLIGHTS := true
 
+# Display
 TARGET_NO_HW_VSYNC := true
+TARGET_DISABLE_TRIPLE_BUFFERING := true
 
-# cat /proc/emmc
+# WiFi
+WIFI_BAND := 802_11_ABGN
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_WLAN_DEVICE := bcmdhd
+WIFI_DRIVER_FW_PATH_STA := "/system/vendor/firmware/fw_bcmdhd.bin"
+WIFI_DRIVER_FW_PATH_AP := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_FW_PATH_P2P := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_MODULE_NAME := bcmdhd
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/bcmdhd.ko"
+BOARD_LEGACY_NL80211_STA_EVENTS := true
+
+# cat /proc/emmc                                                
 #dev:        size     erasesize name
 #mmcblk0p17: 00040000 00000200 "misc"
 #mmcblk0p21: 0087f400 00000200 "recovery"
 #mmcblk0p22: 00400000 00000200 "boot"
-#mmcblk0p25: 22dffe00 00000200 "system"
-#mmcblk0p27: 12bffe00 00000200 "cache"
-#mmcblk0p26: 496ffe00 00000200 "userdata"
-#mmcblk0p28: 014bfe00 00000200 "devlog"
-#mmcblk0p29: 00040000 00000200 "pdata"
+#mmcblk0p25: 31dffe00 00000200 "system"
+#mmcblk0p29: 001ffe00 00000200 "local"
+#mmcblk0p28: 0adffe00 00000200 "cache"
+#mmcblk0p26: 3cfffe00 00000200 "userdata"
+#mmcblk0p30: 017ade00 00000200 "devlog"
+#mmcblk0p32: 00040000 00000200 "pdata"
+#mmcblk0p31: 00011c00 00000200 "extra"
+#mmcblk0p33: 05ffe000 00000200 "fat"
+#mmcblk0p27: 07fffe00 00000200 "swap"
 
 TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 585101312
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 1232072704
-BOARD_BOOTIMAGE_PARTITION_SIZE := 4404304
-BOARD_FLASH_BLOCK_SIZE := 262144
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 836763136
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 1023409664
+BOARD_BOOTIMAGE_PARTITION_SIZE := 4194304
+BOARD_FLASH_BLOCK_SIZE := 512
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
-
-# Kernel
-TARGET_KERNEL_SOURCE := kernel/htc/primoc
+TARGET_KERNEL_SOURCE := kernel/htc/SickleKernel
 TARGET_KERNEL_CONFIG := primoc_defconfig
-TARGET_PREBUILT_KERNEL := device/htc/primoc/prebuilt/root/kernel
-BUILD_KERNEL := true
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
-# PMEM
-TARGET_USES_PMEM := true
-
-# File System
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
@@ -87,8 +105,6 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storag
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/primoc/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/htc/primoc/configs/libbt_vndcfg.txt
 
-# No SDK blobs
-BUILD_EMULATOR_SENSORS_MODULE := false
-BUILD_EMULATOR_GPS_MODULE := false
+# ION Defines
+TARGET_USES_ION := true
