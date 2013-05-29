@@ -107,4 +107,5 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storag
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/primoc/bluetooth
 
 # ION Defines
-TARGET_USES_ION := true
+#TARGET_USES_ION := true
+TARGET_USES_PMEM := true
