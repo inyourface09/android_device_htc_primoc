@@ -11,7 +11,7 @@ $(call inherit-product, vendor/cm/config/cdma.mk)
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/bootanimation/480.zip:system/media/bootanimation.zip
 
-PRODUCT_NAME := cfx_primoc
+PRODUCT_NAME := cm_primoc
 PRODUCT_RELEASE_NAME := primoc
 PRODUCT_BRAND := htc
 PRODUCT_DEVICE := primoc
@@ -21,5 +21,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=htc_primoc BUILD_FINGERPRINT=virgin
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.goo.developerid=inyourface09 \
-    ro.goo.rom=cm_$(TARGET_PRODUCT)-ion \
+    ro.goo.rom=cm_$(TARGET_PRODUCT)-pmem \
     ro.goo.version=$(shell date +%s)
